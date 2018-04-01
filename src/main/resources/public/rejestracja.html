@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="js/postrequest.js"></script>
+</head>
+<body>
+<div>
+
+<header>
+	<h1>Pensjonat</h1>
+</header>
+
+<nav>
+	<ul>
+		<li><a href="onas.html">O nas</a></li>
+		<li><a href="aktualnosci.html">Aktualności</a></li>
+		<li><a href="galeria.html">Galeria</a></li>
+		<li><a href="cennik.html">Cennik</a></li>
+		<li><a href="rezerwuj.html">Rezerwacja</a></li>
+		<li><a href="kontakt.html">Kontakt</a></li>
+	</ul>
+</nav>
+<aside>
+	<ul>
+		<li><a href="logowanie.html">Zaloguj</a></li>
+		<p><a href="rejestracja.html">Zarejestruj się</a></p>
+	</ul>
+</aside>
+<article>
+	<h2>Wprowadź poniżej Swoje dane</h2>
+	<form id="clientForm" method="post">
+		<div class="form-group">
+			<label for="firstname">Imie:<br> </label>
+			<input type="firstname" class="form-control" id="firstname" placeholder="Wprowadź Imię">
+		</div>
+		<div class="form-group">
+			<label for="lastname">Nazwisko:<br> </label>
+			<input type="lastname" class="form-control" id="lastname" placeholder="Wprowadź Nazwisko">
+		</div>
+		<div class="form-group">
+			<label for="email">Email:<br> </label>
+			<input type="email" class="form-control" id="email" placeholder="Wprowadź adres mailowy">
+		</div>
+		<div class="form-group">
+			<label for="city">Miasto:<br> </label>
+			<input type="city" class="form-control" id="city" placeholder="Miasto">
+		</div>
+		<div class="form-group">
+			<label for="street">Ulica:<br> </label>
+			<input type="street" class="form-control" id="street" placeholder="Ulica">
+		</div>
+		<div class="form-group">
+			<label for="number">Numer domu/lokalu:<br> </label>
+			<input type="number" class="form-control" id="number" placeholder="Wprowadź numer domu/lokalu">
+		</div>
+		<div class="form-group">
+			<label for="phone">Telefon:<br> </label>
+			<input type="phone" class="form-control" id="phone" placeholder="Telefon">
+		</div>
+		<div class="checkbox">
+			<label><input type="checkbox">Wyrażam zgodę na przetważanie moich danych osobowych</label>
+		</div>
+		<div class="checkbox">
+			<label><input type="checkbox">Akceptuję warunki rezerwacji i pobytu Pensjonatu</label>
+		</div>
+			<button id="submitButton" class="btn btn-default" type="submit">Dodaj konto</button>
+	</form>
+	<div class="col-sm-7" id="postResultDiv">
+</article>
+
+<footer>Copyright &copy Michal Senkowicz</footer>
+</div>
+
+</body>
+</html>
