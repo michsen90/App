@@ -34,7 +34,7 @@ public class Prices {
 	protected Prices() {}
 	
 	public Prices(Long idPrice, int pricePerDay, Rooms room) {
-		
+		//dsadasdasdasd
 		this.idPrice = idPrice;
 		this.pricePerDay = pricePerDay;
 		this.room = room;
