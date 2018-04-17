@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -40,9 +41,8 @@ public class Accounts {
 	@NotNull
 	private String password;
 	
-	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="id_client")
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_client", nullable=false)
 	@JsonBackReference(value="accounts")
 	private Clients client;
 	
@@ -59,7 +59,7 @@ public class Accounts {
 	@Override
 	public String toString() {
 		
-		return String.format("Account [id=%d, login='%s', password='%s', client=%d]", idAccount, login, password, client.getIdClient());
+		return String.format("Account [id=%d, login='%s', password='%s', idClient=%d]", idAccount, login, password, client.getIdClient());
 	}
 
 	public Long getIdAccount() {

@@ -1,3 +1,5 @@
+
+
 $( document ).ready(function(){
 	
 	//submit form
@@ -6,12 +8,14 @@ $( document ).ready(function(){
 		//prevent the form
 		event.preventDefault();
 		
-		makeRequest();
-		window.location.href="http://localhost:8080/tworzeniekonta.html";
+		var idClient = makeRequest();
+		
+		window.location.href="http://localhost:8080/tworzeniekonta.html?id=" + idClient;
 	});
 	
 	function makeRequest() {
-		
+		var idClient;
+
 		var formData = {
 				firstname : $("#firstname").val(),
 				lastname : $("#lastname").val(),
@@ -29,14 +33,16 @@ $( document ).ready(function(){
 			 url: "/clients/saveClient",
 				success : function(result) {
 									
-					alert("OK");
+					//alert(result);
+					//alert(JSON.stringify(result));
+					idClient = result['data']['idClient'];
 				},
 				error : function(e) {
 					alert("Error!"+e)
 					console.log("ERROR: ", e);
 				}
 		});
-		
+		return idClient;
 	}
 	
 	function resetData(){

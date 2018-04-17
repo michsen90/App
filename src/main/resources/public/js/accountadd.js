@@ -10,10 +10,13 @@ $( document ).ready(function(){
 	});
 	
 	function makeRequest(){
-		
+		var search = window.location.search;
+		var id = search.split('=')[1];
+		alert(id);
 		var formData = {
 				login : $("#login").val(),
-				password : $("#password").val()
+				password : $("#password").val(),
+				client : id
 		}
 		
 		console.log(JSON.stringify(formData));
