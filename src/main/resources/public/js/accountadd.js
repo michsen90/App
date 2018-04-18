@@ -17,6 +17,7 @@ $( document ).ready(function(){
 				login : $("#login").val(),
 				password : $("#password").val(),
 				client : id
+
 		}
 		
 		console.log(JSON.stringify(formData));

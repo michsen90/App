@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -44,6 +45,7 @@ public class Accounts {
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_client", nullable=false)
 	@JsonBackReference(value="accounts")
+	@PrimaryKeyJoinColumn
 	private Clients client;
 	
 	protected Accounts() {}
@@ -59,7 +61,7 @@ public class Accounts {
 	@Override
 	public String toString() {
 		
-		return String.format("Account [id=%d, login='%s', password='%s', idClient=%d]", idAccount, login, password, client.getIdClient());
+		return String.format("Account [id=%d, login='%s', password='%s', idClient=%d]", idAccount, login, password, client);
 	}
 
 	public Long getIdAccount() {

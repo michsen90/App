@@ -36,6 +36,7 @@ $( document ).ready(function(){
 					//alert(result);
 					//alert(JSON.stringify(result));
 					idClient = result['data']['idClient'];
+					alert(idClient);
 				},
 				error : function(e) {
 					alert("Error!"+e)
