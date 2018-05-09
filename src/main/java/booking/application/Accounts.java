@@ -1,5 +1,7 @@
 package booking.application;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @EnableAutoConfiguration
 @Table(name="accounts")
-public class Accounts {
+public class Accounts implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE2")
@@ -45,7 +47,6 @@ public class Accounts {
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_client", nullable=false)
 	@JsonBackReference(value="accounts")
-	@PrimaryKeyJoinColumn
 	private Clients client;
 	
 	protected Accounts() {}
@@ -61,7 +62,7 @@ public class Accounts {
 	@Override
 	public String toString() {
 		
-		return String.format("Account [id=%d, login='%s', password='%s', idClient=%d]", idAccount, login, password, client);
+		return String.format("Account [id=%d, login='%s', password='%s', idClient=%d]", idAccount, login, password, client.getIdClient());
 	}
 
 	public Long getIdAccount() {

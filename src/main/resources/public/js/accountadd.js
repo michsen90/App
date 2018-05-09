@@ -16,7 +16,15 @@ $( document ).ready(function(){
 		var formData = {
 				login : $("#login").val(),
 				password : $("#password").val(),
-				client : id
+				client : {
+					firstname : 'dsadasd',
+					lastname : 'sdasdadsa',
+					email : 'dsadas@o2.pl',
+					city : 'dsaddasd',
+					street : 'dasda',
+					number : '2',
+					phone : '423423423'
+				}
 
 		}
 		

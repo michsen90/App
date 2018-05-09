@@ -1,5 +1,6 @@
 package booking.application;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @EnableAutoConfiguration
 @Table(name="clients")
-public class Clients {
+public class Clients implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")

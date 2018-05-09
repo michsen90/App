@@ -1,7 +1,7 @@
 package booking.application;
 
 public class Response {
-	
+
 	private String status;
 	private Object data;
 	
@@ -27,8 +27,5 @@ public class Response {
 
 	public void setData(Object data) {
 		this.data = data;
-	}
-	
-	
-
+}
 }

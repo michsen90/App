@@ -10,33 +10,35 @@ $( document ).ready(function(){
 		
 		var idClient = makeRequest();
 		
-		window.location.href="http://localhost:8080/tworzeniekonta.html?id=" + idClient;
+		
 	});
 	
 	function makeRequest() {
 		var idClient;
 
 		var formData = {
-				firstname : $("#firstname").val(),
-				lastname : $("#lastname").val(),
-				email : $("#email").val(),
-				city : $("#city").val(),
-				street : $("#street").val(),
-				number : $("#number").val(),
-				phone : $("#phone").val()
+				login : $("#login").val(),
+				password : $("#password").val(),
+				client : {
+					firstname : $("#firstname").val(),
+					lastname : $("#lastname").val(),
+					email : $("#email").val(),
+					city : $("#city").val(),
+					street : $("#street").val(),
+					number : $("#number").val(),
+					phone : $("#phone").val()
+				}
 		}
 		console.log(JSON.stringify(formData));
 		$.ajax({
 			 type: "POST",
  			 contentType : "application/json",
  			 data : JSON.stringify(formData),
-			 url: "/clients/saveClient",
+			 url: "/accounts/saveAccount",
 				success : function(result) {
-									
-					//alert(result);
-					//alert(JSON.stringify(result));
-					idClient = result['data']['idClient'];
-					alert(idClient);
+						
+					alert("Done");
+					window.location.href="http://localhost:8080/poprawnelogowanie.html";
 				},
 				error : function(e) {
 					alert("Error!"+e)

@@ -14,6 +14,9 @@ public class AccountsRestController {
 	@Autowired
 	private AccountsRespository accountsRespository;
 	
+	@Autowired
+	private ClientsRespository clientRespository;
+	
 	@RequestMapping(value="/allaccounts", method=RequestMethod.GET)
 	public Iterable<Accounts> getAccounts(){
 		
@@ -24,8 +27,13 @@ public class AccountsRestController {
 	@PostMapping(value="/saveAccount")
 	public Response postAccount(@RequestBody Accounts account) {
 		
+		System.out.println("Post account started");
+		clientRespository.save(account.getClient());
+		System.out.println("client saved");
 		accountsRespository.save(account);
+		System.out.println("account saved");
 		Response response = new Response("Done", account);
+		System.out.println("Preparing response");
 		return response;
 	}
 	
