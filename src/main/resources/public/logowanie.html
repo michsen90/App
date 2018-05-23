@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script">
-		function validateForm(){
-			
-			var l = document.forms["log"]["login"].value;
-			var p = document.forms["log"]["password"].value;
-			if (l ==""){
-				alert("Wprowadz login");
-				return false;
-			}
-			if (p ==""){
-				alert("Wprowadz haslo");
-				return false;
-			}
-		}
-	</script>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styles.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="js/loging.js"></script>
 </head>
 <body>
 <div>
@@ -45,7 +31,7 @@
 	</ul>
 </aside>
 <article>
-	<form name="log" onsubmit="return validateForm()" action=... method="post">
+	<form id="loginForm" method="post">
 		<div class="form-group">
 			<label for="login">Login: </label>
 			<input type="login" name="login" class="form-control" id="login" placeholder="wprowadz logn">

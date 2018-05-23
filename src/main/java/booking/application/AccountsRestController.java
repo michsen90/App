@@ -37,4 +37,11 @@ public class AccountsRestController {
 		return response;
 	}
 	
+	@RequestMapping(value="/findByLogin", method=RequestMethod.GET)
+	public Iterable<Accounts> findByLogin(String login) {
+		
+		Iterable<Accounts> loginBy = accountsRespository.findByLogin(login);
+		return loginBy;
+	}
+	
 }

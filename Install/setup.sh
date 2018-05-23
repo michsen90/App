@@ -12,3 +12,7 @@ export PGPASSWORD=root_123
 
 psql -h localhost -U postgres -a -f createDB.sql
 
+
+
+
+
