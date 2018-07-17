@@ -1,6 +1,7 @@
 package booking.application;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,7 @@ public class AccountsRestController {
 	}
 	
 	@RequestMapping(value="/findByLogin", method=RequestMethod.GET)
-	public Iterable<Accounts> findByLogin(String login) {
+	public Iterable<Accounts> findByLogin(@Param("login") String login) {
 		
 		Iterable<Accounts> loginBy = accountsRespository.findByLogin(login);
 		return loginBy;

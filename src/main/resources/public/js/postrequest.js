@@ -14,7 +14,7 @@ $( document ).ready(function(){
 	});
 	
 	function makeRequest() {
-		var idClient;
+		//var idClient;
 
 		var formData = {
 				login : $("#login").val(),
@@ -45,7 +45,7 @@ $( document ).ready(function(){
 					console.log("ERROR: ", e);
 				}
 		});
-		return idClient;
+		//return idClient;
 	}
 	
 	function resetData(){

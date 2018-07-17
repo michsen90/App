@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -45,6 +46,7 @@ public class Clients implements Serializable {
 	
 	@Column(name="email")
 	@NotNull
+	@Email
 	private String email;
 	
 	@Column(name="city")

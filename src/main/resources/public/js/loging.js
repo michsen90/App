@@ -1,25 +1,76 @@
-
-var login =  document.getElementById("login").value;
-var password = document.getElementById("password").value;
-
-function validate(){
-
+$(document).ready(function(){
 	
-	if (login = "" && password = ""){
-		
-		alert("uzupełnij login i hasło")
-		return false;
-	}else
-		function checkExisting(){
-		
-		var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", "http://localhost:8080/accounts/findByLogin", true);
-		xhttp.send();
-		console.log(xhttp.response);
+	$('#login').on('blur', function(){
+		var input = $(this);
+		var name_length = input.val().length;
+		if (name_length >= 6 && name_length <= 20){
+			input.removeClass("invalid").addClass("valid");
+			input.next('.komunikat').text("Ok").removeClass("blad").addClass("Ok");
 			
-		
-	}
+		}
+		else{
+			input.removeClass("valid").addClass("invalid");
+			input.next('.komunikat').text("Login musi mieć min 6 znaków, maks 20").removeClass("Ok").addClass("blad");
+		}
+	});
+	$('#password').on('blur', function(){
+		var input = $(this);
+		var password_length = input.val().length;
+		if (password_length >= 6 && password_length <= 20){
+			input.removeClass("invalid").addClass("valid");
+			input.next('.komunikat').text("Ok").removeClass("blad").addClass("Ok");
+		}
+		else{
+			input.removeClass("valid").addClass("invalid");
+			input.next('.komunikat').text("Hasło musi mieć od 6 do 20 znaków").removeClass("Ok").addClass("blad");
+		}
+	});
 	
-}
+	
+	
+	
+	$('#submitButton').clic(function(){
+		var login = $('#login');
+		var password = $('#password');
+		
+		event.preventDefault();
+		ajaxGet();
+		
+		
+		
+		/*$.get("/accounts/findByLogin?login=" + login);
+		
+		if (login.hasClass('valid') && password.hasClass('valid')){
+			alert("działa");
+		}
+		else{
+			alert("Uzupełnij wszystkie pola");
+		}*/
+		
+	});
+	
+	function ajaxGet(){
+		$.ajax({
+			
+			type: "GET",
+			url: "/accounts/findByLogin",
+			succes: function(result){
+				if(result.status == "Done"){
+					
+				}
+			}
+			
+		});
+	}	
+	
+});
+
+
+
+
+
+
+
+
 
 
