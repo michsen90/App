@@ -18,37 +18,33 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
-
-	@Autowired
-	DataSource dataSource;
-	
+public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
+    
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.jdbcAuthentication().dataSource(dataSource)
-		.usersByUsernameQuery("SELECT `email`,`passwordHash`,`active` FROM `users` WHERE `email`=?")
-		.authoritiesByUsernameQuery("SELECT 'USER' FROM `users` WHERE `email`=?")
-		.passwordEncoder(passwordEncoder());
-	}
-	
-	 @Bean
-	 public AuthenticationManager authenticationManagerBean() throws Exception {
-	        return super.authenticationManagerBean();
-	}
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		
-		 return new BCryptPasswordEncoder();
-	}
-	
-	 @Override
-	    protected void configure(HttpSecurity http) throws Exception {
-	        http
-	            .authorizeRequests()
-	                .anyRequest()
-	                    .denyAll()
-	                .and()
-	            .formLogin()
-	                .disable();
-	}
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+        .withUser("login").password("haslo")
+        .roles("USER");
+        
+    }
+ 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+          .authorizeRequests()
+          .antMatchers("/logowanie*", "/js/**", "/styles*").anonymous()
+          .anyRequest().authenticated()
+          .and()
+          .formLogin()
+          .loginPage("/logowanie.html")
+          .defaultSuccessUrl("/index.html")
+          .failureUrl("/logowanie.html?error=true")
+          .and()
+          .logout().logoutSuccessUrl("/logowanie.html");
+    }
+  
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

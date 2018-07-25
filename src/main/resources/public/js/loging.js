@@ -49,7 +49,7 @@ $(document).ready(function(){
 		
 	});
 	
-	function ajaxGet(){
+	/*function ajaxGet(){
 		$.ajax({
 			
 			type: "GET",
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			}
 			
 		});
-	}	
+	}*/	
 	
 });
 
