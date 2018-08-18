@@ -25,22 +25,26 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
         .withUser("login").password("haslo")
         .roles("USER");
-        
+
+
     }
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
           .authorizeRequests()
-          .antMatchers("/logowanie*", "/js/**", "/styles*").anonymous()
-          .anyRequest().authenticated()
-          .and()
+              .antMatchers("/logowanie*", "/js/**", "/styles.css").permitAll()
+                .anyRequest().authenticated()
+          .and().httpBasic().and()
           .formLogin()
           .loginPage("/logowanie.html")
+                .loginProcessingUrl("/verifyLogin")
           .defaultSuccessUrl("/index.html")
           .failureUrl("/logowanie.html?error=true")
           .and()
           .logout().logoutSuccessUrl("/logowanie.html");
+
+        http.csrf().disable();
     }
   
     @Bean

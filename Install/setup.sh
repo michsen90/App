@@ -1,4 +1,7 @@
 #!/bin/bash
+
+
+set -e
 #for Ubuntu
 
 apt-get install postgresql -y 

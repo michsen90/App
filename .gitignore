@@ -3,3 +3,6 @@
 .settings
 .project
 .springBeans
+.idea/*
+.idea/
+**iml

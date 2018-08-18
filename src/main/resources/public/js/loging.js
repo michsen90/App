@@ -29,10 +29,11 @@ $(document).ready(function(){
 	
 	
 	
-	$('#submitButton').clic(function(){
-		var login = $('#login');
-		var password = $('#password');
-		
+	$('#submitButton').click(function(){
+		var login = $('#login').val();
+		var password = $('#password').val();
+		alert(login)
+		alert(password)
 		event.preventDefault();
 		ajaxGet();
 		
