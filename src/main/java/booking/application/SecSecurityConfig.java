@@ -20,13 +20,27 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     
+	@Autowired
+	DataSource dataSource;
+	
+	/*
+	 * 
+	 * auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery(
+			"select username,password, enabled from users where username=?")
+		.authoritiesByUsernameQuery(
+			"select username, role from user_roles where username=?");
+	 */
+	
 	@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-        .withUser("login").password("haslo")
-        .roles("USER");
+//        auth.inMemoryAuthentication()
+//        .withUser("login").password("haslo")
+//        .roles("USER");
 
-
+		auth.jdbcAuthentication().dataSource(dataSource)
+			.usersByUsernameQuery("select login as username, password, 1 as enabled from accounts where login=?")
+			.authoritiesByUsernameQuery("select login as username, 'USER' as role from accounts where login=?");
     }
  
     @Override
