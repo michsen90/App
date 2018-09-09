@@ -50,9 +50,8 @@ public class Reservations {
 	
 	protected Reservations() {}
 	
-	public Reservations(Long idReservation, Date startDate, Date finishDate, Clients client, Rooms room) {
+	public Reservations(Date startDate, Date finishDate, Clients client, Rooms room) {
 		
-		this.idReservation = idReservation;
 		this.startDate = startDate;
 		this.finishDate = finishDate;
 		this.client = client;
