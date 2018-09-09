@@ -35,7 +35,7 @@
         <form action="/sprawdz_rezerwacje">
             Data przyjazdu: <input type="date" name="data_przyjazdu" id="wyjazd"><br>
             Data wyjazdu <input type="date" name="data_wyjazdu" ><br>
-            Ilosc Osob <input type="number" name="ilosc_osob"><br>
+            Ilosc Osob <input type="number" name="ilosc_osob" value="2"><br>
             <input type="submit" value="Sprawdz Rezerwacje"><br>
         </form>
 
