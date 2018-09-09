@@ -32,20 +32,9 @@
         </ul>
     </aside>
     <article>
-        <h2>Dostepne pokoje</h2>
-        <form action="/rezerwuj_pokoj">
-            <%  Iterable<Rooms> pokoje = (Iterable<Rooms>)request.getAttribute("pokoje");
-                for (Rooms pokoj: pokoje)        {
-            %>
-                    <p>
-                    <input type="radio" name="pokoj" value="<%=pokoj.getIdRoom()%>">Pokoj numer <%=pokoj.getIdRoom()%> <br>Typ <%=pokoj.getRoomType()%><br>
-                    Czy moga byc zwierzeta <%=pokoj.getAnimals()%><br>
-                    Balkon <%=pokoj.getBalcone()%><br>
-                    Pietro <%=pokoj.getFloor()%><br>
+        <h2>Status rezerwacji</h2>
+            <%=request.getAttribute("wiadomosc")%>
 
-                <%}%>
-            <input type="submit" value="Rezerwuj">
-        </form>
     </article>
 
     <footer>Copyright &copy Michal Senkowicz</footer>
