@@ -30,9 +30,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name="accounts")
 public class Accounts implements Serializable {
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
+		
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE2")
 	@SequenceGenerator(name="SEQUENCE2", sequenceName="accounts_id_account_seq", allocationSize=1)

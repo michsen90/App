@@ -38,15 +38,12 @@
 		<% Iterable<Prices> p = (Iterable<Prices>)request.getAttribute("prices"); 
 			for (Prices price: p) {
 		%>
-			
-        
-        	<p>
-        	<input type="radio" name="price" value="<%=price.getIdPrice()%>">
-        	Pokój <%=price.getRoom().getRoomType()%>
-        	Cena <%=price.getPricePerDay()%>       
-        	</p>
-   
-		
+        <table>
+        <p>
+        	<tr>Pokój <%=price.getRoom().getRoomType()%></tr>
+        	<tr>Cena <%=price.getPricePerDay()%></tr>       
+		</p>
+		</table>
 		<%} %>
 			
 	
