@@ -19,7 +19,7 @@
             <li><a href="onas.html">O nas</a></li>
             <li><a href="aktualnosci.html">Aktualnosci</a></li>
             <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="cennik.html">Cennik</a></li>
+            <li><a href="cennik">Cennik</a></li>
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
 
@@ -37,13 +37,13 @@
         <% Clients c = (Clients)request.getAttribute("dane"); %>
         <form action="editClient">
         	<input type="hidden" name="id" id="id" value="<%=c.getIdClient()%>"><br>
-			Imie: <input type="text" name="firstname" id="name" value="<%=c.getFirstname()%>"><br>
-			Nazwisko: <input type="text" name="lastname" value="<%=c.getLastname()%>"><br>
-			E-mail: <input type="email" name="email" value="<%=c.getEmail()%>"><br>
-			Miasto: <input type="text" name="city" value="<%=c.getCity()%>"><br>
-			Ulica: <input type="text" name="street" value="<%=c.getStreet()%>"><br>
-			Numer lokalu: <input type="text" name="number" value="<%=c.getNumber()%>"><br>
-			Telefon: <input type="text" name="phone" value="<%=c.getPhone()%>"><br>
+			Imie: <br><input type="text" name="firstname" id="name" value="<%=c.getFirstname()%>"><br>
+			Nazwisko:<br> <input type="text" name="lastname" value="<%=c.getLastname()%>"><br>
+			E-mail: <br><input type="email" name="email" value="<%=c.getEmail()%>"><br>
+			Miasto: <br><input type="text" name="city" value="<%=c.getCity()%>"><br>
+			Ulica: <br><input type="text" name="street" value="<%=c.getStreet()%>"><br>
+			Numer lokalu: <br><input type="text" name="number" value="<%=c.getNumber()%>"><br>
+			Telefon: <br><input type="text" name="phone" value="<%=c.getPhone()%>"><br>
 			<button type="submit" value="editClient">Aktualizuj dane</button>
 		</form>
 	<div class="col-sm-7" id="postResultDiv">

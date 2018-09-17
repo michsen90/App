@@ -1,4 +1,5 @@
-<%@ page import="booking.application.Rooms" %>
+<%@page import="booking.application.Prices"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
             <li><a href="onas.html">O nas</a></li>
             <li><a href="aktualnosci.html">Aktualnosci</a></li>
             <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="cennik.html">Cennik</a></li>
+            <li><a href="cennik">Cennik</a></li>
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
 
@@ -33,23 +34,23 @@
         </ul>
     </aside>
     <article>
-        <h2>Dostepne pokoje</h2>
-        <form action="/rezerwuj_pokoj">
-            <%  Iterable<Rooms> pokoje = (Iterable<Rooms>)request.getAttribute("pokoje");
-                for (Rooms pokoj: pokoje)        {
-            %>
-                    <p>
-                    <input type="radio" name="pokoj" value="<%=pokoj.getIdRoom()%>">Pokoj numer <%=pokoj.getIdRoom()%> <br>Typ <%=pokoj.getRoomType()%><br>
-                    Czy moga byc zwierzeta <%=pokoj.getAnimals()%><br>
-                    Balkon <%=pokoj.getBalcone()%><br>
-                    Pietro <%=pokoj.getFloor()%><br>
-
-                <%}%>
-            <input type="submit" value="Rezerwuj">
-        </form>
-    </article>
-
-    <footer>Copyright &copy Michal Senkowicz</footer>
+       <h1>Cennik :</h1>
+		<% Iterable<Prices> p = (Iterable<Prices>)request.getAttribute("prices"); 
+			for (Prices price: p) {
+		%>
+			
+        
+        	<p>
+        	<input type="radio" name="price" value="<%=price.getIdPrice()%>">
+        	Pokój <%=price.getRoom().getRoomType()%>
+        	Cena <%=price.getPricePerDay()%>       
+        	</p>
+   
+		
+		<%} %>
+			
+	
+	</article>
 </div>
 </body>
 </html>

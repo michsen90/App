@@ -19,7 +19,7 @@
             <li><a href="onas.html">O nas</a></li>
             <li><a href="aktualnosci.html">Aktualnosci</a></li>
             <li><a href="galeria.html">Galeria</a></li>
-            <li><a href="cennik.html">Cennik</a></li>
+            <li><a href="cennik">Cennik</a></li>
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
 
@@ -39,7 +39,9 @@
                 for (Rooms pokoj: pokoje)        {
             %>
                     <p>
-                    <input type="radio" name="pokoj" value="<%=pokoj.getIdRoom()%>">Pokoj numer <%=pokoj.getIdRoom()%> <br>Typ <%=pokoj.getRoomType()%><br>
+                    <input type="radio" name="pokoj" value="<%=pokoj.getIdRoom()%>">
+                    Pokoj numer <%=pokoj.getIdRoom()%> <br>
+                    Typ <%=pokoj.getRoomType()%><br>
                     Czy moga byc zwierzeta <%=pokoj.getAnimals()%><br>
                     Balkon <%=pokoj.getBalcone()%><br>
                     Pietro <%=pokoj.getFloor()%><br>

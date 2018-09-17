@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @EnableAutoConfiguration
 @Table(name="prices")
@@ -29,6 +31,7 @@ public class Prices {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_room")
+	@JsonBackReference
 	private Rooms room;
 	
 	protected Prices() {}

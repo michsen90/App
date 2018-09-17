@@ -33,6 +33,9 @@ public class ReservationController {
 
     @Autowired
     private AccountsRespository accountsRespository;
+    
+    @Autowired
+    private PricesRespository pricesRespository;
 
 
     private Clients getLoggedClient(HttpServletRequest request) {
@@ -131,6 +134,16 @@ public class ReservationController {
 		Clients aktualny_client = getLoggedClient(request);
 		clientsRepository.delete(aktualny_client);
 		return "/WEB-INF/jsp/clientDeleted.jsp";
+	}
+	
+	@GetMapping("/cennik")
+	public String pricesforRooms(Model model) {
+		
+		Iterable<Prices> p = pricesRespository.prices();
+		model.addAttribute("prices", p);
+		return "/WEB-INF/jsp/prices.jsp";
+		
+		
 	}
 }
 

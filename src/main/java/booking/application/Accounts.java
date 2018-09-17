@@ -18,7 +18,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -28,6 +30,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name="accounts")
 public class Accounts implements Serializable {
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE2")
 	@SequenceGenerator(name="SEQUENCE2", sequenceName="accounts_id_account_seq", allocationSize=1)
