@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="booking.application.Clients"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,17 +33,12 @@
         </ul>
     </aside>
     <article>
-        <h2>Formularz rezerwacji</h2>
-        <form action="/sprawdz_rezerwacje">
-            Data przyjazdu: <input type="date" name="data_przyjazdu" id="wyjazd"><br>
-            Data wyjazdu <input type="date" name="data_wyjazdu" ><br>
-            Ilosc Osob <input type="number" name="ilosc_osob" value="2"><br>
-            <input type="submit" value="Sprawdz Rezerwacje"><br>
-        </form>
+        <h2>Konto zostalo usuniete</h2>
 
+		
     </article>
 
-    <footer>Copyright &copy Michal Senkowicz</footer>
+   
 </div>
 </body>
 </html>

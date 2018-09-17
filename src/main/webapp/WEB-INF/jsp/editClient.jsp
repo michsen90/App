@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="booking.application.Clients"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,17 +33,27 @@
         </ul>
     </aside>
     <article>
-        <h2>Formularz rezerwacji</h2>
-        <form action="/sprawdz_rezerwacje">
-            Data przyjazdu: <input type="date" name="data_przyjazdu" id="wyjazd"><br>
-            Data wyjazdu <input type="date" name="data_wyjazdu" ><br>
-            Ilosc Osob <input type="number" name="ilosc_osob" value="2"><br>
-            <input type="submit" value="Sprawdz Rezerwacje"><br>
-        </form>
+        <h2>Uzupelnij dane: </h2>
+        <% Clients c = (Clients)request.getAttribute("dane"); %>
+        <form action="editClient">
+        	<input type="hidden" name="id" id="id" value="<%=c.getIdClient()%>"><br>
+			Imie: <input type="text" name="firstname" id="name" value="<%=c.getFirstname()%>"><br>
+			Nazwisko: <input type="text" name="lastname" value="<%=c.getLastname()%>"><br>
+			E-mail: <input type="email" name="email" value="<%=c.getEmail()%>"><br>
+			Miasto: <input type="text" name="city" value="<%=c.getCity()%>"><br>
+			Ulica: <input type="text" name="street" value="<%=c.getStreet()%>"><br>
+			Numer lokalu: <input type="text" name="number" value="<%=c.getNumber()%>"><br>
+			Telefon: <input type="text" name="phone" value="<%=c.getPhone()%>"><br>
+			<button type="submit" value="editClient">Aktualizuj dane</button>
+		</form>
+	<div class="col-sm-7" id="postResultDiv">
+</article>
+       
+        
 
     </article>
 
-    <footer>Copyright &copy Michal Senkowicz</footer>
+   
 </div>
 </body>
 </html>

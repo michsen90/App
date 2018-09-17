@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="booking.application.Clients"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,17 +33,35 @@
         </ul>
     </aside>
     <article>
-        <h2>Formularz rezerwacji</h2>
-        <form action="/sprawdz_rezerwacje">
-            Data przyjazdu: <input type="date" name="data_przyjazdu" id="wyjazd"><br>
-            Data wyjazdu <input type="date" name="data_wyjazdu" ><br>
-            Ilosc Osob <input type="number" name="ilosc_osob" value="2"><br>
-            <input type="submit" value="Sprawdz Rezerwacje"><br>
-        </form>
-
+        <h2>Twoje dane:</h2>
+        
+        <%
+        	Clients c = (Clients)request.getAttribute("dane");
+        	
+        	String m = (String) request.getAttribute("message");
+            if (m!=null) {
+        %>
+        		<h2><%=m %></h2>
+        <%} %>
+        <table>
+        
+        <p>
+        
+        <tr><br> Imie <%=c.getFirstname()%></tr> 
+        <tr><br> Nazwisko <%=c.getLastname()%></tr>
+        <tr><br> Email <%=c.getEmail()%></tr>
+        <tr><br> Miasto <%=c.getCity()%></tr>
+        <tr><br> Ulica <%=c.getStreet()%></tr> 
+        <tr><br> Numer <%=c.getNumber()%></tr>
+        <tr><br> Telefon <%=c.getPhone()%></tr>        
+        </p>
+        
+        
+        </table>
+		
     </article>
 
-    <footer>Copyright &copy Michal Senkowicz</footer>
+   
 </div>
 </body>
 </html>

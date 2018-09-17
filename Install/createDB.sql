@@ -63,12 +63,12 @@ CREATE TABLE public.reservations
   id_reservation serial NOT NULL,
   start_date date NOT NULL,
   finish_date date NOT NULL,
-  id_client integer NOT NULL,
+  id_client integer,
   id_room integer NOT NULL,
   CONSTRAINT reservation_pkey PRIMARY KEY (id_reservation),
   CONSTRAINT clients_id_client_fkey FOREIGN KEY (id_client)
       REFERENCES public.clients (id_client) MATCH FULL
-      ON UPDATE RESTRICT ON DELETE RESTRICT,
+      ON UPDATE RESTRICT ON DELETE SET NULL,
   CONSTRAINT rooms_id_room_fkey FOREIGN KEY (id_room)
       REFERENCES public.rooms (id_room) MATCH FULL
       ON UPDATE RESTRICT ON DELETE RESTRICT

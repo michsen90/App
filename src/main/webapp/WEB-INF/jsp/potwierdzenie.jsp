@@ -17,7 +17,7 @@
     <nav>
         <ul>
             <li><a href="onas.html">O nas</a></li>
-            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="aktualnosci.html">Aktualnosci</a></li>
             <li><a href="galeria.html">Galeria</a></li>
             <li><a href="cennik.html">Cennik</a></li>
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
@@ -28,7 +28,8 @@
     <aside>
         <ul>
             <li><a href="logowanie.html">Zaloguj</a></li>
-            <li><a href="rejestracja.html">Zarejestruj się</a></li>
+            <li><a href="rejestracja.html">Zarejestruj sie</a></li>
+            <li><a href="konto.html">Konto</a></li>
         </ul>
     </aside>
     <article>

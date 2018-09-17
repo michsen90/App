@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="styles.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  	<script src="js/accountadd.js"></script>
 </head>
 <body>
 <div>
@@ -27,27 +26,19 @@
 <aside>
 	<ul>
 		<li><a href="logowanie.html">Zaloguj</a></li>
-		<p><a href="rejestracja.html">Zarejestruj się</a></p>
+		<li><a href="rejestracja.html">Zarejestruj sie</a></li>
+		<li><a href="konto.html">Zarejestruj sie</a></li>
 	</ul>
 </aside>
 <article>
-	<h2>Podaj Login oraz hasło</h2>
-	<form id="accountForm" method="post">
-		<div class="form-group">
-			<label for="login">Login:<br> </label>
-			<input type="login" class="form-control" id="login" placeholder="Wprowadź Login">
-		</div>
-		<div class="form-group">
-			<label for="password">Hasło:<br> </label>
-			<input type="password" class="form-control" id="password" placeholder="Wprowadź Hasło">
-		</div>
-			<button id="submitButton" class="btn btn-default" type="submit">Stwórz użytkownika</button>
-	</form>
-	<div class="col-sm-7" id="postResultDiv">
+	
+	<h2>Twoje konto</h2>
+	<li><a href="showdata.html">Wyświetl dane</a></li>
+	<li><a href="showdata.html?edit=true">Edytuj dane</a></li>
+	<li><a href="deleteClient">Usun konto</a></li>
+	
 </article>
 
-<footer>Copyright &copy Michal Senkowicz</footer>
 </div>
-
 </body>
 </html>

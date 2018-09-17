@@ -1,13 +1,13 @@
 
-	div.container {
+div.container {
     width: 100%;
     border: 1px solid gray;
 }
 
 header, footer {
     padding: 1em;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: grey;
     clear: left;
     text-align: center;
 }
@@ -30,14 +30,14 @@ nav ul a {
 
 article {
     margin-left: 170px;
-    border-left: 1px solid gray;
+    border-left: 1px #e9b96e;
     padding: 1em;
     overflow: hidden;
 }
 map {
 	width: 400px;
 	height: 400px;
-	background: yellow;
+	background: #73d216;
 }
 aside {
 	float: right;

@@ -38,7 +38,7 @@ $( document ).ready(function(){
 				success : function(result) {
 						
 					alert("Done");
-					window.location.href="http://localhost:8080/poprawnelogowanie.html";
+					window.location.href="http://localhost:8080/index.html";
 				},
 				error : function(e) {
 					alert("Error!"+e)
@@ -49,6 +49,7 @@ $( document ).ready(function(){
 	}
 	
 	function resetData(){
+		
 		$("#firstname").val("");
 		$("#lastname").val("");
 		$("#email").val("");
