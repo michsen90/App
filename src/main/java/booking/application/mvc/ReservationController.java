@@ -139,7 +139,8 @@ public class ReservationController {
 	@GetMapping("/cennik")
 	public String pricesforRooms(Model model) {
 		
-		Iterable<Prices> p = pricesRespository.pricesJPQL();
+		Iterable<Prices> p = pricesRespository.findAll();
+		System.out.println(p);
 		model.addAttribute("prices", p);
 		return "/WEB-INF/jsp/prices.jsp";
 		

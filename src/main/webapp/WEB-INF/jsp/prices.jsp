@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="booking.application.Prices"%>
 
 <!DOCTYPE html>
@@ -36,15 +37,16 @@
     <article>
        <h1>Cennik :</h1>
 		<% Iterable<Prices> p = (Iterable<Prices>)request.getAttribute("prices"); 
-			for (Prices price: p) {
+			/*for (Prices price: p) {*/
+							for (Prices price: p) {
 		%>
         <table>
         <p>
-        	<tr>Pokój <%=price.getRoom().getRoomType()%></tr>
-        	<tr>Cena <%=price.getPricePerDay()%></tr>       
+        	<tr>Pokój <%=price.getRoom().getRoomType() %>
+        	<tr>Cena  <%=price.getPricePerDay() %>   
 		</p>
 		</table>
-		<%} %>
+		<%}%>
 			
 	
 	</article>
