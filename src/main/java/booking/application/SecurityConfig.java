@@ -38,9 +38,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        .withUser("login").password("haslo")
 //        .roles("USER");
 
-		auth.jdbcAuthentication().dataSource(dataSource)
+		/*auth.jdbcAuthentication().dataSource(dataSource)
 			.usersByUsernameQuery("select login as username, password, 1 as enabled from accounts where login=?")
-			.authoritiesByUsernameQuery("select login as username, 'USER' as role from accounts where login=?");
+			.authoritiesByUsernameQuery("select login as username, 'USER' as role from accounts where login=?");*/
+		
+		auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery("select login as username, password, 1 as enabled from accounts where login=?")
+		.authoritiesByUsernameQuery("select role, login from roles where login=?");
     }
  
     @Override
@@ -49,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
           .authorizeRequests()
               .antMatchers("/logowanie*", "/aktualnosci*", "/cennik*", 
         "/galeria*", "/kontakt*", "/onas", "/rejestracja*", "/js/**", "/index*", "/js/postrequest*", "/styles.css").permitAll()
+              .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
           .and().httpBasic().and()
           .formLogin()

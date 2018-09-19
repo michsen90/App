@@ -18,7 +18,7 @@ import java.util.Date;
 
 
 @Controller
-public class ReservationController {
+public class MVCApplicationController {
 
 	
 	

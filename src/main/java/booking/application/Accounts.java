@@ -1,6 +1,7 @@
 package booking.application;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SequenceGenerator;
@@ -23,6 +25,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Entity
@@ -31,12 +34,13 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 public class Accounts implements Serializable {
 
 		
-	@Id
+	
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE2")
 	@SequenceGenerator(name="SEQUENCE2", sequenceName="accounts_id_account_seq", allocationSize=1)
 	@Column(name="id_account")
 	private Long idAccount;
 	
+	@Id
 	@Column(name="login")
 	@Size(min=6, max=20)
 	@NotNull
@@ -47,10 +51,18 @@ public class Accounts implements Serializable {
 	@NotNull
 	private String password;
 	
+	@Column(name="enabled")
+	@NotNull
+	private int enabled;
+
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_client", nullable=false)
 	@JsonBackReference(value="accounts")
 	private Clients client;
+	
+	@OneToMany(mappedBy="role")
+	@JsonManagedReference(value="roles")
+	private List<Roles> role;
 	
 	protected Accounts() {}
 	
@@ -100,5 +112,19 @@ public class Accounts implements Serializable {
 		this.client = client;
 	}
 	
-	
+	public int getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(int enabled) {
+		this.enabled = enabled;
+	}
+	public List<Roles> getRole() {
+		return role;
+	}
+
+	public void setRole(List<Roles> role) {
+		this.role = role;
+	}
+
 }

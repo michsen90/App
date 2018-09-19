@@ -17,8 +17,7 @@ CREATE TABLE public.clients
   phone character varying(12),
   CONSTRAINT clients_pkey PRIMARY KEY (id_client)
 );
-
-drop table if exists accounts;
+drop table if exists public.accounts;
 
 CREATE TABLE public.accounts
 (
@@ -26,10 +25,23 @@ CREATE TABLE public.accounts
   login character varying(20) NOT NULL,
   password character varying(20) NOT NULL,
   id_client integer NOT NULL,
-  CONSTRAINT accounts_pkey PRIMARY KEY (id_account),
+  enabled int not null default 1,
+  CONSTRAINT accounts_pkey PRIMARY KEY (login),
   CONSTRAINT clients_id_client_fkey FOREIGN KEY (id_client)
       REFERENCES public.clients (id_client) MATCH FULL
       ON UPDATE RESTRICT ON DELETE RESTRICT
+);
+
+drop table if exists roles;
+
+Create table roles(
+id_role serial not null,
+role varchar(20),
+login varchar(20) not null,
+constraint roles_pkey primary key (id_role),
+constraint accounts_login_fkey foreign key (login)
+references accounts (login) match full
+on update restrict on delete restrict
 );
 
 CREATE TABLE public.rooms
@@ -96,6 +108,19 @@ insert into accounts (login, password, id_client)
 values ('grzbar', 'bartgrz', 4);
 insert into accounts (login, password, id_client)
 values ('wlokaz', 'wlodek', 5);
+
+insert into roles (role, login)
+values('ROLE_USER', 'michsen');
+insert into roles (role, login)
+values('ROLE_ADMIN', 'michsen');
+insert into roles (role, login)
+values('ROLE_USER', 'andkow');
+insert into roles (role, login)
+values('ROLE_USER', 'pawsta');
+insert into roles (role, login)
+values('ROLE_USER', 'grzbar');
+insert into roles (role, login)
+values('ROLE_USER', 'wlokaz');
 
 insert into rooms (room_type, balcone, floor, family_room, animals)
 values ('czteroosobowy', 'NO', 'Parter', 'YES', 'YES');
