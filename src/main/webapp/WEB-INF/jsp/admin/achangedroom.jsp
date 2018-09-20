@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@page import="booking.application.Prices"%>
-<%@page import="booking.application.Clients"%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -23,6 +23,10 @@
             <li><a href="cennik">Cennik</a></li>
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
+            
+            <li><a href="aacounts">1. Zarzadzaj kontami</a></li>
+        	<li><a href="arooms">2. Zarzadzaj pokojami</a></li>
+        	<li><a href="areservations">3. Zarzadzaj rezerwacjami</a></li>
 
         </ul>
     </nav>
@@ -34,27 +38,11 @@
         </ul>
     </aside>
     <article>
-        <h2>Uzupelnij dane: </h2>
-        
-       <% Clients c = (Clients)request.getAttribute("dane"); %>
-       
-        <form action="editClient">
-        	<input type="hidden" name="id" id="id" value="<%=c.getIdClient()%>"><br>
-			Imie: <br><input type="text" name="firstname" id="name" value="<%=c.getFirstname()%>"><br>
-			Nazwisko:<br> <input type="text" name="lastname" value="<%=c.getLastname()%>"><br>
-			E-mail: <br><input type="email" name="email" value="<%=c.getEmail()%>"><br>
-			Miasto: <br><input type="text" name="city" value="<%=c.getCity()%>"><br>
-			Ulica: <br><input type="text" name="street" value="<%=c.getStreet()%>"><br>
-			Numer lokalu: <br><input type="text" name="number" value="<%=c.getNumber()%>"><br>
-			Telefon: <br><input type="text" name="phone" value="<%=c.getPhone()%>"><br>
-			<button type="submit" value="editClient">Aktualizuj dane</button>
-		</form>
-        
-	<div class="col-sm-7" id="postResultDiv">
-</article>
+       	<h2>Edycja danych</h2>
+       	
+       	<%=request.getAttribute("m")%>
        
         
-
     </article>
 
    

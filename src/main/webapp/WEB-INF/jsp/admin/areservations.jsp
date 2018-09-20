@@ -22,10 +22,9 @@
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             
-            <li><a href="aclients">1. Zarzadzaj klientami</a></li>
-        	<li><a href="aacounts">2. Zarzadzaj kontami</a></li>
-        	<li><a href="arooms">3. Zarzadzaj pokojami</a></li>
-        	<li><a href="areservations">4. Zarzadzaj rezerwacjami</a></li>
+            <li><a href="aacounts">1. Zarzadzaj kontami</a></li>
+        	<li><a href="arooms">2. Zarzadzaj pokojami</a></li>
+        	<li><a href="areservations">3. Zarzadzaj rezerwacjami</a></li>
 
         </ul>
     </nav>

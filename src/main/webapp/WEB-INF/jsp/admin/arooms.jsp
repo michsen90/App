@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="booking.application.Prices"%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,10 +24,9 @@
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             
-            <li><a href="aclients">1. Zarzadzaj klientami</a></li>
-        	<li><a href="aacounts">2. Zarzadzaj kontami</a></li>
-        	<li><a href="arooms">3. Zarzadzaj pokojami</a></li>
-        	<li><a href="areservations">4. Zarzadzaj rezerwacjami</a></li>
+            <li><a href="aacounts">1. Zarzadzaj kontami</a></li>
+        	<li><a href="arooms">2. Zarzadzaj pokojami</a></li>
+        	<li><a href="areservations">3. Zarzadzaj rezerwacjami</a></li>
 
         </ul>
     </nav>
@@ -37,10 +38,36 @@
         </ul>
     </aside>
     <article>
-       	<h2>Witaj na koncie administratora systemu:</h2>
-        
+       	<h2>Pokoje:</h2>
        	
-       
+       	<a href="addingnewroom">Dodaj nowy pokoj</a>
+       	
+        <form action="aeditingRooms">
+        <%
+        	Iterable<Prices> prices = (Iterable<Prices>)request.getAttribute("rooms");
+        	for (Prices p: prices){ %>
+        		
+        		
+        		<p>
+        			<input type="checkbox" name="id" value="<%=p.getIdPrice()%>">
+        			
+        			Typ pokoju <%=p.getRoom().getRoomType() %><br>
+        			Balkon <%=p.getRoom().getBalcone()%><br>
+        			Pietro <%=p.getRoom().getFloor() %><br>
+        			Pokoj rodzinny <%=p.getRoom().getFamilyRoom() %><br>
+        			Zwierzeta <%=p.getRoom().getAnimals() %><br>
+        			Cena za dzien <%= p.getPricePerDay()%> PLN <br>
+        			<br>
+        		</p>
+        		
+        	
+        	<%}
+        %>
+        	<input type="submit" value="Edytuj pokoj">
+        </form>
+        
+        
+        
     </article>
 
    

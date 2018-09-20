@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="booking.application.Accounts"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,10 +23,10 @@
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             
-            <li><a href="aclients">1. Zarzadzaj klientami</a></li>
-        	<li><a href="aacounts">2. Zarzadzaj kontami</a></li>
-        	<li><a href="arooms">3. Zarzadzaj pokojami</a></li>
-        	<li><a href="areservations">4. Zarzadzaj rezerwacjami</a></li>
+            
+        	<li><a href="aacounts">1. Zarzadzaj kontami</a></li>
+        	<li><a href="arooms">2. Zarzadzaj pokojami</a></li>
+        	<li><a href="areservations">3. Zarzadzaj rezerwacjami</a></li>
 
         </ul>
     </nav>
@@ -37,8 +38,25 @@
         </ul>
     </aside>
     <article>
-       	<h2>Witaj na koncie administratora systemu:</h2>
-        
+       	<h2>Szczegoly kont uzytkownikow:</h2>
+       	<%
+       		Iterable<Accounts> accounts = (Iterable<Accounts>)request.getAttribute("accounts");
+       		for (Accounts a: accounts){
+       	%>
+        	<p>Klient: </p>
+        		
+        		Id konta:  <%=a.getIdAccount() %><br>
+        		login: 	   <%=a.getLogin() %><br>
+        		Id klienta:<%=a.getClient().getIdClient() %><br>
+        		Imie:      <%=a.getClient().getFirstname() %><br>
+        		Nazwisko : <%=a.getClient().getLastname() %><br>
+        		E-mail:    <%=a.getClient().getEmail() %><br>
+        		Miasto:    <%=a.getClient().getCity() %><br>
+        		Ulica:     <%=a.getClient().getStreet() %><br>
+        		Numer:     <%=a.getClient().getNumber() %><br>
+        		Telefon:   <%=a.getClient().getPhone() %><br>
+        	
+        <%} %>
        	
        
     </article>

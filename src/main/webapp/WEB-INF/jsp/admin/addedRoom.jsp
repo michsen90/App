@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<%@page import="booking.application.Clients"%>
+
+
+<%@page import="booking.application.Prices"%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -23,10 +26,9 @@
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
             
-            <li><a href="aclients">1. Zarzadzaj klientami</a></li>
-        	<li><a href="aacounts">2. Zarzadzaj kontami</a></li>
-        	<li><a href="arooms">3. Zarzadzaj pokojami</a></li>
-        	<li><a href="areservations">4. Zarzadzaj rezerwacjami</a></li>
+            <li><a href="aacounts">1. Zarzadzaj kontami</a></li>
+        	<li><a href="arooms">2. Zarzadzaj pokojami</a></li>
+        	<li><a href="areservations">3. Zarzadzaj rezerwacjami</a></li>
 
         </ul>
     </nav>
@@ -38,33 +40,21 @@
         </ul>
     </aside>
     <article>
-       	<h2>Klienci:</h2>
-       	
+       	<h2>Pokoje</h2>
+        
         <%
-        	Iterable<Clients> clients = (Iterable<Clients>)request.getAttribute("clients");
-        	for (Clients c: clients){ 
-        	
-        	%>
-        	
-        	<p>
-        		
-        		Klient <br>
-        		Id:		   <%=c.getIdClient() %>
-        		Imie:      <%=c.getFirstname() %><br>
-        		Nazwisko : <%=c.getLastname() %><br>
-        		E-mail:    <%=c.getEmail() %><br>
-        		Miasto:    <%=c.getCity() %><br>
-        		Ulica:     <%=c.getStreet() %><br>
-        		Numer:     <%=c.getNumber() %><br>
-        		Telefon:   <%=c.getPhone() %><br>
-        	</p>
-        
-        <%		
-        	}
+        	Prices p = (Prices)request.getAttribute("room");
         %>
-        
-       	
-       
+        	<table>
+        	<p>
+        		<tr>Typ pokoju: <%=p.getRoom().getRoomType()%>
+        		<tr>Balkon: <%=p.getRoom().getBalcone() %>
+        		<tr>Pietro: <%=p.getRoom().getFloor() %>
+        		<tr>Pokoj rodzinny: <%=p.getRoom().getFamilyRoom() %>
+        		<tr>Zwierzeta: <%=p.getRoom().getAnimals() %>
+        		<tr>Cena za dzien: <%=p.getPricePerDay() %>
+      		</p>
+      		</table>
     </article>
 
    

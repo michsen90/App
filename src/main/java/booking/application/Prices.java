@@ -2,6 +2,7 @@ package booking.application;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class Prices implements Serializable{
 	@Column(name="price_per_day")
 	private int pricePerDay;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="id_room")
 	@JsonBackReference
 	private Rooms room;

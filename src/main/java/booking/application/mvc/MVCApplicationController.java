@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.sym.Name;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
@@ -165,16 +167,102 @@ public class MVCApplicationController {
 		return page;
 	}
 	
-	@GetMapping("/aclients")
-	public String adminClients(HttpServletRequest request, Model model) {
+	@GetMapping("/aacounts")
+	public String adminAccounts(HttpServletRequest request, Model model) {
 		
-		Iterable<Clients> clients = clientsRepository.findAll();
-		model.addAttribute("clients",clients);
+		Iterable<Accounts> accounts = accountsRespository.findAll();
+		model.addAttribute("accounts", accounts);
+		return "/WEB-INF/jsp/admin/aacounts.jsp";
+	}
+	@GetMapping("/arooms")
+	public String adminRooms(HttpServletRequest request, Model model) {
 		
-		return "/WEB-INF/jsp/admin/aclients.jsp";
+		String page = "/WEB-INF/jsp/admin/arooms.jsp";
+		Iterable<Prices> prices = pricesRespository.findAll();
+		model.addAttribute("rooms", prices);
+		
+		return page;
+	}
+	@GetMapping("/aeditingRooms")
+	public String adminEditRooms(HttpServletRequest request, Model model, HttpSession session, 
+			@RequestParam(name="id") Long id) {
+		
+		session.setAttribute("id", id);
+		Prices p = pricesRespository.findOne(id);
+		model.addAttribute("room", p);
+		return "/WEB-INF/jsp/admin/aeditingRooms.jsp";
 	}
 	
+	@GetMapping("/achangedroom")
+	public String adminChangedRoom(HttpServletRequest request, Model model, HttpSession session, 
+			@RequestParam(name="id") Long id,  @RequestParam(name="type_room") String roomType, @RequestParam(name="balcone")
+			String balcone, @RequestParam(name="floor") String floor, @RequestParam(name="family_room") String familyRoom, 
+			@RequestParam(name="animals") String animals, @RequestParam(name="price_per_day")
+			int pricePerDay) {
+		
+		session.setAttribute("id", id);
+		Prices p = pricesRespository.findOne(id);
+		p.getRoom().setRoomType(roomType);
+		p.getRoom().setBalcone(balcone);
+		p.getRoom().setFloor(floor);
+		p.getRoom().setFamilyRoom(familyRoom);
+		p.getRoom().setAnimals(animals);
+		p.setPricePerDay(pricePerDay);
+		pricesRespository.save(p);
+		String m = "Dane pokoju zostaly zaktualizowane";
+		model.addAttribute("room", p).addAttribute("m", m);
+		return "/WEB-INF/jsp/admin/achangedroom.jsp";
+	}
+	
+	@GetMapping("addingnewroom")
+	public String addingNewRooms(Model model, HttpServletRequest request) {
+		
+		String m = "Dodajesz nowy pokoj";
+		model.addAttribute("m", m);
+		return"/WEB-INF/jsp/admin/aaddRoom.jsp";
+	}
+	
+	@GetMapping("aaddRoom")
+	public String addRoom(HttpServletRequest request, Model model, @RequestParam(name="type_room") String roomType,
+			@RequestParam(name="balcone") String balcone, @RequestParam(name="floor") String floor,
+			@RequestParam(name="family_room") String familyRoom, 
+			@RequestParam(name="animals") String animals, @RequestParam(name="price_per_day") int pricePerDay) {
+		
+		Rooms r = new Rooms(null, roomType, balcone, floor, familyRoom, animals);
+		Prices p = new Prices(null, pricePerDay, r);
+		pricesRespository.save(p);
+		String m = "Nowy pokoj zostal dodany";
+		model.addAttribute("room", p).addAttribute("m", m);
+		return"/WEB-INF/jsp/admin/addedRoom.jsp";
+	}
+	
+	
+	/*
+	    @GetMapping("/rezerwuj_pokoj")
+    public String makeResevation(HttpServletRequest request,
+            HttpSession session, @RequestParam(name = "pokoj")  long nr_pokoju,
+            Model model) {
 
+        Date data_przyjazdu  = (Date)session.getAttribute("data_przyjazdu");
+        Date data_wyjazdu  = (Date)session.getAttribute("data_wyjazdu");
+        DateFormat formatter = new SimpleDateFormat("yyyy-mm-DD");
+
+        Clients aktualny_client = getLoggedClient(request);
+        Rooms room = roomsRespository.findOne(nr_pokoju);
+        Reservations rezerwacja = new Reservations(data_przyjazdu, data_wyjazdu, aktualny_client, room);
+
+        reservations.save(rezerwacja);
+        String message="Twoja rezerwacja zostala przyjeta. Termin:  \n " +formatter.format(data_przyjazdu) +"\n " + formatter.format(data_wyjazdu) + "\n numer pokoju: " + nr_pokoju;
+        session.removeAttribute("data_przyjazdu");
+        session.removeAttribute("data_wyjazdu");
+        model.addAttribute("wiadomosc",message);
+        return "/WEB-INF/jsp/potwierdzenie.jsp";
+    }
+	 * */
+	
+	
+	
+	
 	
 }
 
