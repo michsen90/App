@@ -3,11 +3,9 @@ package booking.application.mvc;
 import booking.application.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,11 +34,14 @@ public class MVCApplicationController {
     
     @Autowired
     private PricesRespository pricesRespository;
+    
+    @Autowired
+    private RolesRespository rolesRespository;
 
 
     private Clients getLoggedClient(HttpServletRequest request) {
     	
-    	String login = request.getUserPrincipal().getName();
+    	 String login = request.getUserPrincipal().getName();
          Iterable<Accounts> accounts = accountsRespository.findByLogin(login);
          Clients aktualny_client = null;
          for (Accounts ac : accounts) {
@@ -50,13 +51,13 @@ public class MVCApplicationController {
     }
     
     @GetMapping("/rezerwuj")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String rezerwacja(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "/WEB-INF/jsp/rezerwacje.jsp";
     }
 
     @GetMapping("/sprawdz_rezerwacje")
-    public String sprawdz_rezerwacje(
+    public String checkFreeRooms(
             HttpSession session,
             @RequestParam(name = "data_przyjazdu") @DateTimeFormat(pattern="yyyy-MM-dd") Date data_przyjazdu,
             @RequestParam(name = "data_wyjazdu") @DateTimeFormat(pattern="yyyy-MM-dd") Date data_wyjazdu,
@@ -71,7 +72,7 @@ public class MVCApplicationController {
     }
 
     @GetMapping("/rezerwuj_pokoj")
-    public String rezerwuj_pokoj(HttpServletRequest request,
+    public String makeResevation(HttpServletRequest request,
             HttpSession session, @RequestParam(name = "pokoj")  long nr_pokoju,
             Model model) {
 
@@ -84,7 +85,7 @@ public class MVCApplicationController {
         Reservations rezerwacja = new Reservations(data_przyjazdu, data_wyjazdu, aktualny_client, room);
 
         reservations.save(rezerwacja);
-        String message="success \n" +formatter.format(data_przyjazdu) +"\n"+formatter.format(data_wyjazdu)+"\n"+nr_pokoju;
+        String message="Twoja rezerwacja zostala przyjeta. Termin:  \n " +formatter.format(data_przyjazdu) +"\n " + formatter.format(data_wyjazdu) + "\n numer pokoju: " + nr_pokoju;
         session.removeAttribute("data_przyjazdu");
         session.removeAttribute("data_wyjazdu");
         model.addAttribute("wiadomosc",message);
@@ -146,6 +147,24 @@ public class MVCApplicationController {
 		
 		
 	}
+	@GetMapping("/decide")
+	public String adminHomePage(HttpServletRequest request, Model model) {
+		
+		String page = "/WEB-INF/jsp/index.jsp";
+		String login = request.getUserPrincipal().getName();
+		Accounts account = accountsRespository.findAccountByLogin(login);
+		Roles role = rolesRespository.findByAccount(account);
+		String admin = "ADMIN";
+		
+		if(admin.equals(role.getRole())) {
+			page = "/WEB-INF/jsp/admin/details.jsp";
+		}
+		model.addAttribute("role", role);
+		
+		
+		return page;
+	}
+	
 }
 
 

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<%@page import="booking.application.Clients"%>
+
+
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="booking.application.Roles"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -33,9 +36,13 @@
         </ul>
     </aside>
     <article>
-        
-
-		
+       	<h2>Witaj na koncie administratora systemu:</h2>
+        <h3>1. Zarzadzaj klientami</h3>
+        <h3>2. Zarzadzaj kontami</h3>
+        <h3>3. Zarzadzaj pokojami</h3>
+        <h3>4. Zarzadzaj rezerwacjami</h3>
+       	
+       
     </article>
 
    

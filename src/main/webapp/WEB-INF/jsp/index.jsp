@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="booking.application.Roles"%>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -16,12 +17,11 @@
 <nav>
 	<ul>
 		<li><a href="onas.html">O nas</a></li>
-		<li><a href="aktualnosci.html">Aktualności</a></li>
+		<li><a href="aktualnosci.html">Aktualnosci</a></li>
 		<li><a href="galeria.html">Galeria</a></li>
 		<li><a href="cennik">Cennik</a></li>
 		<li><a href="rezerwuj.html">Rezerwacja</a></li>
 		<li><a href="kontakt.html">Kontakt</a></li>
-		
 	</ul>
 </nav>
 <aside>
@@ -32,11 +32,9 @@
 	</ul>
 </aside>
 <article>
-	<p>Pensjonat istnieje od x lat. Znajduje sie w malowniczej. jhkajshdkajshdkjashdjka
-	dhajskdhjashdjkhaskjdhakjsdha</p>
-	
-	<p>Pdasdasdaslk laskd  dsaj djas kjahsdjkahsjkd hasjkd hasjk hkajsh jkas hasjdhaksj da
-	d hsajkdhask hkad hsajkd hajkshdkaj s</p>
+	<p>Informacje o pensjonacie.</p>
+
+	<p></p>
 </article>
 
 </div>

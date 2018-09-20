@@ -50,16 +50,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-          .authorizeRequests()
+          .authorizeRequests().antMatchers("/admin/**, /admin/details*").hasRole("ADMIN")
               .antMatchers("/logowanie*", "/aktualnosci*", "/cennik*", 
         "/galeria*", "/kontakt*", "/onas", "/rejestracja*", "/js/**", "/index*", "/js/postrequest*", "/styles.css").permitAll()
-              .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
           .and().httpBasic().and()
           .formLogin()
           .loginPage("/logowanie.html")
                 .loginProcessingUrl("/verifyLogin")
-          .defaultSuccessUrl("/index.html")
+          .defaultSuccessUrl("/decide")
           .failureUrl("/logowanie.html?error=true")
           .and()
           .logout().logoutSuccessUrl("/logowanie.html");

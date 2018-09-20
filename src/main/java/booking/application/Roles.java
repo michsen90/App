@@ -1,5 +1,7 @@
 package booking.application;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @EnableAutoConfiguration
 @Table(name="roles")
-public class Roles {
+public class Roles implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE6")
