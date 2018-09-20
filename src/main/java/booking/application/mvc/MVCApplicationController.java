@@ -165,6 +165,17 @@ public class MVCApplicationController {
 		return page;
 	}
 	
+	@GetMapping("/aclients")
+	public String adminClients(HttpServletRequest request, Model model) {
+		
+		Iterable<Clients> clients = clientsRepository.findAll();
+		model.addAttribute("clients",clients);
+		
+		return "/WEB-INF/jsp/admin/aclients.jsp";
+	}
+	
+
+	
 }
 
 

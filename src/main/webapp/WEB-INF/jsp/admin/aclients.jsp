@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-
-
-<%@page import="org.springframework.security.core.Authentication"%>
-<%@page import="booking.application.Roles"%>
+<%@page import="booking.application.Clients"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -41,8 +38,31 @@
         </ul>
     </aside>
     <article>
-       	<h2>Witaj na koncie administratora systemu:</h2>
-       
+       	<h2>Klienci:</h2>
+       	
+        <%
+        	Iterable<Clients> clients = (Iterable<Clients>)request.getAttribute("clients");
+        	for (Clients c: clients){ 
+        	
+        	%>
+        	
+        	<p>
+        		
+        		Klient <br>
+        		Id:		   <%=c.getIdClient() %>
+        		Imie:      <%=c.getFirstname() %><br>
+        		Nazwisko : <%=c.getLastname() %><br>
+        		E-mail:    <%=c.getEmail() %><br>
+        		Miasto:    <%=c.getCity() %><br>
+        		Ulica:     <%=c.getStreet() %><br>
+        		Numer:     <%=c.getNumber() %><br>
+        		Telefon:   <%=c.getPhone() %><br>
+        	</p>
+        
+        <%		
+        	}
+        %>
+        
        	
        
     </article>
