@@ -40,7 +40,8 @@
     <article>
        	<h2>Pokoje:</h2>
        	
-       	<a href="addingnewroom">Dodaj nowy pokoj</a>
+       	<a href="addingnewroom">Dodaj nowy pokoj</a><br>
+       	<a href="deletingRoom">Usun pokoj</a><br>
        	
         <form action="aeditingRooms">
         <%
@@ -64,6 +65,7 @@
         	<%}
         %>
         	<input type="submit" value="Edytuj pokoj">
+        	
         </form>
         
         

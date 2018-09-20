@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<%@page import="booking.application.Clients"%>
+<%@page import="booking.application.Prices"%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -22,6 +23,10 @@
             <li><a href="cennik">Cennik</a></li>
             <li><a href="rezerwuj.html">Rezerwacja</a></li>
             <li><a href="kontakt.html">Kontakt</a></li>
+            
+            <li><a href="aacounts">1. Zarzadzaj kontami</a></li>
+        	<li><a href="arooms">2. Zarzadzaj pokojami</a></li>
+        	<li><a href="areservations">3. Zarzadzaj rezerwacjami</a></li>
 
         </ul>
     </nav>
@@ -33,9 +38,11 @@
         </ul>
     </aside>
     <article>
-        <h2>Konto zostalo usuniete</h2>
-
-		
+       	<h2>Pokoje:</h2>
+       	
+       	<%=request.getAttribute("m")%>
+       	
+        
     </article>
 
    

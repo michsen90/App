@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<%@page import="booking.application.Reservations"%>
+
+<%@page import="booking.application.Prices"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -37,26 +38,25 @@
         </ul>
     </aside>
     <article>
-       	<h2>Lista rezerwacji</h2>
-       	<%
-       		Iterable<Reservations> reservations = (Iterable<Reservations>)request.getAttribute("reservation");
-       		for(Reservations r: reservations) { %>
-       			
-       			<p>Rezerwacja:</p>
-       			Data rozpoczecia rezerwacji: <%=r.getStartDate() %><br>
-       			Data zakonczenia rezerwacji: <%=r.getFinishDate() %><br>
-       			Numer pokoju: 				 <%=r.getRoom().getIdRoom() %><br>
-       			Imie klienta: 				 <%=r.getClient().getFirstname() %><br>
-       			Nazwisko klienta:			 <%=r.getClient().getLastname() %><br>
-       			
-       		<%}
-       	%>
+       	<h2>Pokoje</h2>
         
-       	
-       
+        	<%
+        	Iterable<Prices> prices = (Iterable<Prices>)request.getAttribute("rooms");
+        	for (Prices p: prices){ %>
+        
+        <form action="adeleteroom">
+        	<input type="checkbox" name="id" value="<%=p.getIdPrice()%>">
+        			Typ pokoju <%=p.getRoom().getRoomType() %><br>
+        			Balkon <%=p.getRoom().getBalcone()%><br>
+        			Pietro <%=p.getRoom().getFloor() %><br>
+        			Pokoj rodzinny <%=p.getRoom().getFamilyRoom() %><br>
+        			Zwierzeta <%=p.getRoom().getAnimals() %><br>
+        			Cena za dzien <%= p.getPricePerDay()%> PLN <br>
+        	<%}%>
+        	<input type="submit" value="Usun pokoj">
+        </form>
+        
     </article>
-
-   
 </div>
 </body>
 </html>

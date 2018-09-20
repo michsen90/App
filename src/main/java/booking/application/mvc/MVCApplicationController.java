@@ -131,14 +131,6 @@ public class MVCApplicationController {
 		return "/WEB-INF/jsp/showdata.jsp";
 	}
 	
-	@GetMapping("/deleteClient")
-	public String deleteClient(HttpServletRequest request, Model model) {
-		
-		Clients aktualny_client = getLoggedClient(request);
-		clientsRepository.delete(aktualny_client);
-		return "/WEB-INF/jsp/clientDeleted.jsp";
-	}
-	
 	@GetMapping("/cennik")
 	public String pricesforRooms(Model model) {
 		
@@ -235,30 +227,35 @@ public class MVCApplicationController {
 		model.addAttribute("room", p).addAttribute("m", m);
 		return"/WEB-INF/jsp/admin/addedRoom.jsp";
 	}
+	@GetMapping("deletingRoom")
+	public String adeleteRoom(HttpServletRequest request, Model model) {
+		
+		Iterable<Prices> prices = pricesRespository.findAll();
+		model.addAttribute("rooms", prices);
+		return "/WEB-INF/jsp/admin/adeleteRoom.jsp";
+	}
+	@GetMapping("adeleteroom")
+	public String adeletedRoom(HttpServletRequest request, Model model, HttpSession session,
+			@RequestParam(name="id") Long id) {
+		
+		session.setAttribute("id", id);
+		Prices p = pricesRespository.findOne(id);
+		pricesRespository.delete(p);
+		String m = "Pokoj zostal usuniety";
+		model.addAttribute("room", p).addAttribute("m", m);
+		return "/WEB-INF/jsp/admin/aroomdeleted.jsp";
+	}
 	
 	
-	/*
-	    @GetMapping("/rezerwuj_pokoj")
-    public String makeResevation(HttpServletRequest request,
-            HttpSession session, @RequestParam(name = "pokoj")  long nr_pokoju,
-            Model model) {
-
-        Date data_przyjazdu  = (Date)session.getAttribute("data_przyjazdu");
-        Date data_wyjazdu  = (Date)session.getAttribute("data_wyjazdu");
-        DateFormat formatter = new SimpleDateFormat("yyyy-mm-DD");
-
-        Clients aktualny_client = getLoggedClient(request);
-        Rooms room = roomsRespository.findOne(nr_pokoju);
-        Reservations rezerwacja = new Reservations(data_przyjazdu, data_wyjazdu, aktualny_client, room);
-
-        reservations.save(rezerwacja);
-        String message="Twoja rezerwacja zostala przyjeta. Termin:  \n " +formatter.format(data_przyjazdu) +"\n " + formatter.format(data_wyjazdu) + "\n numer pokoju: " + nr_pokoju;
-        session.removeAttribute("data_przyjazdu");
-        session.removeAttribute("data_wyjazdu");
-        model.addAttribute("wiadomosc",message);
-        return "/WEB-INF/jsp/potwierdzenie.jsp";
-    }
-	 * */
+	@GetMapping("/areservations")
+	public String adminReservations(Model model) {
+		
+		Iterable<Reservations> r = reservations.findAll();
+		model.addAttribute("reservation", r);
+		return "/WEB-INF/jsp/admin/areservations.jsp";
+	}
+	
+	
 	
 	
 	
