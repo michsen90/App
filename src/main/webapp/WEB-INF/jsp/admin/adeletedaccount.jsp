@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@page import="booking.application.Accounts"%>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -38,28 +38,9 @@
         </ul>
     </aside>
     <article>
-       	<h2>Szczegoly kont uzytkownikow:</h2>
-       	
-       	<p><a href="aaccountdelete">Usun klienta</a></p>
-       	<%
-       		Iterable<Accounts> accounts = (Iterable<Accounts>)request.getAttribute("accounts");
-       		for (Accounts a: accounts){
-       	%>
-        	<p>Klient: </p>
-        		
-        		Id konta:  <%=a.getIdAccount() %><br>
-        		login: 	   <%=a.getLogin() %><br>
-        		Id klienta:<%=a.getClient().getIdClient() %><br>
-        		Imie:      <%=a.getClient().getFirstname() %><br>
-        		Nazwisko : <%=a.getClient().getLastname() %><br>
-        		E-mail:    <%=a.getClient().getEmail() %><br>
-        		Miasto:    <%=a.getClient().getCity() %><br>
-        		Ulica:     <%=a.getClient().getStreet() %><br>
-        		Numer:     <%=a.getClient().getNumber() %><br>
-        		Telefon:   <%=a.getClient().getPhone() %><br>
-        	
-        <%} %>
-       	
+       	<Konta>
+       	<%=request.getAttribute("m") %>
+    
        
     </article>
 

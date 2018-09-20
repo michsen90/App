@@ -38,27 +38,28 @@
         </ul>
     </aside>
     <article>
-       	<h2>Szczegoly kont uzytkownikow:</h2>
+       	<h2>Wybierz konto do usuniecia</h2>
        	
-       	<p><a href="aaccountdelete">Usun klienta</a></p>
-       	<%
-       		Iterable<Accounts> accounts = (Iterable<Accounts>)request.getAttribute("accounts");
-       		for (Accounts a: accounts){
-       	%>
-        	<p>Klient: </p>
-        		
-        		Id konta:  <%=a.getIdAccount() %><br>
-        		login: 	   <%=a.getLogin() %><br>
-        		Id klienta:<%=a.getClient().getIdClient() %><br>
-        		Imie:      <%=a.getClient().getFirstname() %><br>
-        		Nazwisko : <%=a.getClient().getLastname() %><br>
-        		E-mail:    <%=a.getClient().getEmail() %><br>
-        		Miasto:    <%=a.getClient().getCity() %><br>
-        		Ulica:     <%=a.getClient().getStreet() %><br>
-        		Numer:     <%=a.getClient().getNumber() %><br>
-        		Telefon:   <%=a.getClient().getPhone() %><br>
-        	
-        <%} %>
+      	<%
+      		Iterable<Accounts> accounts = (Iterable<Accounts>)request.getAttribute("accounts");
+      		for (Accounts a: accounts) { %>
+      			
+      			<form action="adeletedaccount">
+      				<input type="checkbox" name="login" value="<%=a.getLogin()%>">
+      				
+        			login: 	   <%=a.getLogin() %><br>
+        			Id klienta:<%=a.getClient().getIdClient() %><br>
+        			Imie:      <%=a.getClient().getFirstname() %><br>
+        			Nazwisko : <%=a.getClient().getLastname() %><br>
+        			E-mail:    <%=a.getClient().getEmail() %><br>
+        			Miasto:    <%=a.getClient().getCity() %><br>
+        			Ulica:     <%=a.getClient().getStreet() %><br>
+        			Numer:     <%=a.getClient().getNumber() %><br>
+        			Telefon:   <%=a.getClient().getPhone() %><br>
+      			
+      		<%}%>
+      				<input type="submit" value="Usun klient">
+      			</form>
        	
        
     </article>

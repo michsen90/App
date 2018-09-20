@@ -166,6 +166,28 @@ public class MVCApplicationController {
 		model.addAttribute("accounts", accounts);
 		return "/WEB-INF/jsp/admin/aacounts.jsp";
 	}
+	
+	@GetMapping("/aaccountdelete")
+	public String deletingAccount(HttpServletRequest request, Model model) {
+		
+		Iterable<Accounts> a = accountsRespository.findAll();
+		model.addAttribute("accounts",a);
+		return "/WEB-INF/jsp/admin/aacountsdelete.jsp";
+	}
+	
+	@GetMapping("/adeletedaccount")
+	public String adeletedAccount(Model model, HttpSession session,
+			@RequestParam(name="login") String login) {
+		
+		session.setAttribute("login", login);
+		Accounts a = accountsRespository.findAccountByLogin(login);
+		accountsRespository.delete(a);
+		String m = "Konto zostalo usuniete";
+		model.addAttribute("account", a).addAttribute("m", m);
+		return "/WEB-INF/jsp/admin/adeletedaccount.jsp";
+	}
+	
+	
 	@GetMapping("/arooms")
 	public String adminRooms(HttpServletRequest request, Model model) {
 		

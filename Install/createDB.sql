@@ -34,14 +34,15 @@ CREATE TABLE public.accounts
 
 drop table if exists roles;
 
-Create table roles(
+create table roles(
 id_role serial not null,
-role varchar(20),
+role varchar(20) not null,
 login varchar(20) not null,
 constraint roles_pkey primary key (id_role),
 constraint accounts_login_fkey foreign key (login)
 references accounts (login) match full
-on update restrict on delete restrict
+
+
 );
 
 CREATE TABLE public.rooms
@@ -109,8 +110,6 @@ values ('grzbar', 'bartgrz', 4);
 insert into accounts (login, password, id_client)
 values ('wlokaz', 'wlodek', 5);
 
-insert into roles (role, login)
-values('ROLE_USER', 'michsen');
 insert into roles (role, login)
 values('ROLE_ADMIN', 'michsen');
 insert into roles (role, login)
