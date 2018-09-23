@@ -46,11 +46,24 @@ aside {
     padding: 1em;
 	
 }
+table, td, th{
+	
+	border: 1px solid black;
+}
+
 table {
-	style: "width:100%";
-	margin: 10;
-	float: right;
-	padding: 1em;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td {
+	
+	height: 50px;
+	vertical-align: bottom;
+	text-align: center;
+}
+th {
+	text-align: center;
 }
 
 

@@ -38,21 +38,45 @@
     </aside>
     <article>
        	<h2>Lista rezerwacji</h2>
-       	<%
+		Rezerwacja<br>
+		<input class="form-control" id="myInput" type="text" placeholder="Szukaj...">
+		<br>
+		<table>
+       	
+       			
+       			<thead>
+       				<th>Data rozpoczecia rezerwacji: </th>
+       				<th>Data zakonczenia rezerwacji: </th>
+       				<th>Numer pokoju: </th>
+       				<th>Imie klienta: </th>
+       				<th>Nazwisko klienta: </th>
+       			</thead>
+       			<%
        		Iterable<Reservations> reservations = (Iterable<Reservations>)request.getAttribute("reservation");
        		for(Reservations r: reservations) { %>
-       			
-       			<p>Rezerwacja:</p>
-       			Data rozpoczecia rezerwacji: <%=r.getStartDate() %><br>
-       			Data zakonczenia rezerwacji: <%=r.getFinishDate() %><br>
-       			Numer pokoju: 				 <%=r.getRoom().getIdRoom() %><br>
-       			Imie klienta: 				 <%=r.getClient().getFirstname() %><br>
-       			Nazwisko klienta:			 <%=r.getClient().getLastname() %><br>
-       			
+       			<tbody id="myTable">
+       				<tr>
+       				<td><%=r.getStartDate() %></td>
+       				<td><%=r.getFinishDate() %></td>
+       				<td><%=r.getRoom().getIdRoom() %></td>
+       				<td><%=r.getClient().getFirstname() %></td>
+       				<td><%=r.getClient().getLastname() %></td>
+       				</tr>
+       			</tbody>
        		<%}
        	%>
-        
-       	
+        </table>
+  	<script>
+  	$(document).ready(function(){
+  	  $("#myInput").on("keyup", function() {
+  	    var value = $(this).val().toLowerCase();
+  	    $("#myTable tr").filter(function() {
+  	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+  	    });
+  	  });
+  	});
+  	</script>
+  	   
        
     </article>
 
