@@ -30,7 +30,7 @@ public class Clients implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE1")
-	@SequenceGenerator(name="SEQUENCE1", sequenceName="accounts_id_account_seq", allocationSize=1)
+	@SequenceGenerator(name="SEQUENCE1", sequenceName="clients_id_client_seq", allocationSize=1)
 	@Column(name="id_client")
 	private Long idClient;
 	

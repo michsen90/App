@@ -38,7 +38,7 @@ $( document ).ready(function(){
 				success : function(result) {
 						
 					alert("Done");
-					window.location.href="http://localhost:8080/index.html";
+					window.location.href="http://localhost:8080/logowanie.html";
 				},
 				error : function(e) {
 					alert("Error!"+e)

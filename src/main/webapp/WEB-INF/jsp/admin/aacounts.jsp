@@ -47,7 +47,7 @@
        	%>
         	<p>Klient: </p>
         		
-        		Id konta:  <%=a.getIdAccount() %><br>
+        		
         		login: 	   <%=a.getLogin() %><br>
         		Id klienta:<%=a.getClient().getIdClient() %><br>
         		Imie:      <%=a.getClient().getFirstname() %><br>

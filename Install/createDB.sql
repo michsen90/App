@@ -7,7 +7,7 @@ drop table if exists clients;
 
 CREATE TABLE public.clients
 (
-  id_client serial NOT NULL,
+  id_client serial,
   firstname character varying(30),
   lastname character varying(30),
   email character varying(50),
@@ -21,7 +21,6 @@ drop table if exists public.accounts;
 
 CREATE TABLE public.accounts
 (
-  id_account serial NOT NULL,
   login character varying(20) NOT NULL,
   password character varying(20) NOT NULL,
   id_client integer NOT NULL,
@@ -111,15 +110,15 @@ insert into accounts (login, password, id_client)
 values ('wlokaz', 'wlodek', 5);
 
 insert into roles (role, login)
-values('ROLE_ADMIN', 'michsen');
+values('ADMIN', 'michsen');
 insert into roles (role, login)
-values('ROLE_USER', 'andkow');
+values('USER', 'andkow');
 insert into roles (role, login)
-values('ROLE_USER', 'pawsta');
+values('USER', 'pawsta');
 insert into roles (role, login)
-values('ROLE_USER', 'grzbar');
+values('USER', 'grzbar');
 insert into roles (role, login)
-values('ROLE_USER', 'wlokaz');
+values('USER', 'wlokaz');
 
 insert into rooms (room_type, balcone, floor, family_room, animals)
 values ('czteroosobowy', 'NO', 'Parter', 'YES', 'YES');
@@ -164,3 +163,5 @@ Select * from rooms;
 Select * from prices;
 
 Select * from reservations;  
+
+Select * from roles;

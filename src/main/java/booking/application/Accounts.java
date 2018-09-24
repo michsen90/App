@@ -35,10 +35,10 @@ public class Accounts implements Serializable {
 
 		
 	
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE2")
+	/*@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE2")
 	@SequenceGenerator(name="SEQUENCE2", sequenceName="accounts_id_account_seq", allocationSize=1)
 	@Column(name="id_account")
-	private Long idAccount;
+	private Long idAccount;*/
 	
 	@Id
 	@Column(name="login")
@@ -68,7 +68,7 @@ public class Accounts implements Serializable {
 	
 	public Accounts(Long idAccount, String login, String password, Clients client) {
 		
-		this.idAccount = idAccount;
+		/*this.idAccount = idAccount;*/
 		this.login = login;
 		this.password = password;
 		this.client = client;
@@ -77,16 +77,16 @@ public class Accounts implements Serializable {
 	@Override
 	public String toString() {
 		
-		return String.format("Account [id=%d, login='%s', password='%s', idClient=%d]", idAccount, login, password, client.getIdClient());
+		return String.format("login='%s', password='%s', idClient=%d]", login, password, client.getIdClient());
 	}
 
-	public Long getIdAccount() {
+	/*public Long getIdAccount() {
 		return idAccount;
 	}
 
 	public void setIdAccount(Long idAccount) {
 		this.idAccount = idAccount;
-	}
+	}*/
 
 	public String getLogin() {
 		return login;
