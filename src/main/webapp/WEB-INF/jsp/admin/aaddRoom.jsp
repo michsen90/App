@@ -48,6 +48,7 @@
       				Pietro: <input type="text" name="floor"><br>
       				Pokoj rodzinny: <input type="text" name="family_room"> <br>
       				Zwierzeta: <input type="text" name="animals"><br>
+      				Maksymalna liczba do zakwaterowania: <input type="text" name="peopleCanBook"><br>
       				Cena za dzien: <input type="text" name="price_per_day"><br>
       			<button type="submit" value="aaddRoom">Dodaj pokoj</button>
         </form>

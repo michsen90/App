@@ -1,5 +1,7 @@
-<%@ page import="booking.application.Rooms" %>
 <!DOCTYPE html>
+
+<%@page import="booking.application.Clients"%>
+<%@page import="booking.application.Reservations"%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -33,26 +35,36 @@
         </ul>
     </aside>
     <article>
-        <h2>Dostepne pokoje</h2>
-        <form action="/rezerwuj_pokoj">
-            <%  Iterable<Rooms> pokoje = (Iterable<Rooms>)request.getAttribute("pokoje");
-                for (Rooms pokoj: pokoje)        {
-            %>
-                    <p>
-                    <input type="radio" name="pokoj" value="<%=pokoj.getIdRoom()%>">
-                    Pokoj numer <%=pokoj.getIdRoom()%> <br>
-                    Typ <%=pokoj.getRoomType()%><br>
-                    Czy moga byc zwierzeta <%=pokoj.getAnimals()%><br>
-                    Balkon <%=pokoj.getBalcone()%><br>
-                    Pietro <%=pokoj.getFloor()%><br>
-                    Maksymalna liczba osób do zakwaterowania: <%=pokoj.getPeopleCanBook() %>
-
-                <%}%>
-            <input type="submit" value="Rezerwuj">
-        </form>
+        <h2>Twoje rezerwacje:</h2>
+        
+        
+         <table>
+        <thead>
+        	<th>Data poczatku rezerwacji</th>
+        	<th>Data konca rezerwacji</th>
+        	<th>Typ pokoju</th>
+        </thead>
+        <%
+        	Iterable<Reservations> reservations = (Iterable<Reservations>)request.getAttribute("reservations");
+        	
+        	for (Reservations r: reservations) {
+        %>	
+        <tbody>
+        <tr>
+        	<td> <%= r.getStartDate()%> </td>
+        	<td> <%= r.getFinishDate()%> </td>
+        	<td> <%= r.getRoom().getRoomType()%> </td>
+        </tr>
+        </tbody>
+        
+        <%} %>
+        
+        </table>
+		
+		
     </article>
 
-    <footer>Copyright &copy Michal Senkowicz</footer>
+   
 </div>
 </body>
 </html>

@@ -52,6 +52,7 @@ CREATE TABLE public.rooms
   floor character varying(10) NOT NULL,
   family_room character varying(3) NOT NULL,
   animals character varying(3) NOT NULL,
+  people_can_book int not null,
   CONSTRAINT rooms_pkey PRIMARY KEY (id_room)
 );
 
@@ -120,16 +121,16 @@ values('USER', 'grzbar');
 insert into roles (role, login)
 values('USER', 'wlokaz');
 
-insert into rooms (room_type, balcone, floor, family_room, animals)
-values ('czteroosobowy', 'NO', 'Parter', 'YES', 'YES');
-insert into rooms (room_type, balcone, floor, family_room, animals)
-values ('trzyosobowy', 'NO', 'Parter', 'YES', 'YES');
-insert into rooms (room_type, balcone, floor, family_room, animals)
-values ('trzyosobowy', 'YES', 'I Piętro', 'NO', 'NO');
-insert into rooms (room_type, balcone, floor, family_room, animals)
-values ('dwuosobowy', 'YES', 'I Piętro', 'NO', 'NO');
-insert into rooms (room_type, balcone, floor, family_room, animals)
-values ('jednoosobowy', 'YES', 'Parter', 'NO', 'NO');
+insert into rooms (room_type, balcone, floor, family_room, animals, people_can_book)
+values ('czteroosobowy', 'NO', 'Parter', 'YES', 'YES', 4);
+insert into rooms (room_type, balcone, floor, family_room, animals, people_can_book)
+values ('trzyosobowy', 'NO', 'Parter', 'YES', 'YES', 3);
+insert into rooms (room_type, balcone, floor, family_room, animals, people_can_book)
+values ('trzyosobowy', 'YES', 'I Piętro', 'NO', 'NO', 3);
+insert into rooms (room_type, balcone, floor, family_room, animals, people_can_book)
+values ('dwuosobowy', 'YES', 'I Piętro', 'NO', 'NO', 2 );
+insert into rooms (room_type, balcone, floor, family_room, animals, people_can_book)
+values ('jednoosobowy', 'YES', 'Parter', 'NO', 'NO', 1);
 
 
 insert into prices (id_room, price_per_day)

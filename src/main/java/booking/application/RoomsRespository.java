@@ -17,9 +17,11 @@ public interface RoomsRespository extends CrudRepository<Rooms, Long>{
             "select resroom.idRoom from Rooms resroom inner join resroom.reservation r" +
             " where (r.startDate <= :start_date and r.finishDate >= :start_date) OR " +
             "(r.startDate < :finish_date and r.finishDate >= :finish_date) OR "+
-            "(:start_date <= r.startDate and :finish_date >= r.finishDate)" +
+            "(:start_date <= r.startDate and :finish_date >= r.finishDate "
+            + "and resroom.peopleCanBook >= :peopleCanBook)" +
             ")")
-    List <Rooms> freeRoomsJPQL(@Param("start_date")Date start_date, @Param("finish_date") Date finish_date);
+    List <Rooms> freeRoomsJPQL(@Param("start_date")Date start_date, @Param("finish_date") Date finish_date, 
+    		@Param("peopleCanBook") int peopleCanBook);
 
 
     @Query(value="select * \n" +

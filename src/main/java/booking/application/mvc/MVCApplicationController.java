@@ -68,7 +68,8 @@ public class MVCApplicationController {
 
         session.setAttribute("data_przyjazdu",data_przyjazdu);
         session.setAttribute("data_wyjazdu", data_wyjazdu);
-        Iterable<Rooms> rooms = roomsRespository.freeRoomsJPQL(data_przyjazdu, data_wyjazdu);
+        session.setAttribute("ilosc_osob", ilosc_osob);
+        Iterable<Rooms> rooms = roomsRespository.freeRoomsJPQL(data_przyjazdu, data_wyjazdu, ilosc_osob);
         model.addAttribute("pokoje",rooms);
         return "/WEB-INF/jsp/sprawdz_rezerwacje.jsp";
     }
@@ -129,6 +130,16 @@ public class MVCApplicationController {
 		model.addAttribute("dane", aktualny_client);
 		model.addAttribute("message", "Dane zaktualizowane w systemie");
 		return "/WEB-INF/jsp/showdata.jsp";
+	}
+	
+	@GetMapping("/myreservation")
+	public String myReservations(Model model, HttpServletRequest request) {
+		
+		
+		Clients c = getLoggedClient(request);
+		Iterable<Reservations> r = reservations.findRservationsByClient(c);
+		model.addAttribute("reservations", r).addAttribute("client", c);
+		return "/WEB-INF/jsp/myreservations.jsp";
 	}
 	
 	@GetMapping("/cennik")
@@ -211,8 +222,8 @@ public class MVCApplicationController {
 	public String adminChangedRoom(HttpServletRequest request, Model model, HttpSession session, 
 			@RequestParam(name="id") Long id,  @RequestParam(name="type_room") String roomType, @RequestParam(name="balcone")
 			String balcone, @RequestParam(name="floor") String floor, @RequestParam(name="family_room") String familyRoom, 
-			@RequestParam(name="animals") String animals, @RequestParam(name="price_per_day")
-			int pricePerDay) {
+			@RequestParam(name="animals") String animals, @RequestParam(name="peopleCanBook") int peopleCanBook, 
+			@RequestParam(name="price_per_day")int pricePerDay) {
 		
 		session.setAttribute("id", id);
 		Prices p = pricesRespository.findOne(id);
@@ -222,6 +233,7 @@ public class MVCApplicationController {
 		p.getRoom().setFamilyRoom(familyRoom);
 		p.getRoom().setAnimals(animals);
 		p.setPricePerDay(pricePerDay);
+		p.getRoom().setPeopleCanBook(peopleCanBook);
 		pricesRespository.save(p);
 		String m = "Dane pokoju zostaly zaktualizowane";
 		model.addAttribute("room", p).addAttribute("m", m);
@@ -240,9 +252,10 @@ public class MVCApplicationController {
 	public String addRoom(HttpServletRequest request, Model model, @RequestParam(name="type_room") String roomType,
 			@RequestParam(name="balcone") String balcone, @RequestParam(name="floor") String floor,
 			@RequestParam(name="family_room") String familyRoom, 
-			@RequestParam(name="animals") String animals, @RequestParam(name="price_per_day") int pricePerDay) {
+			@RequestParam(name="animals") String animals,@RequestParam("peopleCanBook") int peopleCanBook,
+			@RequestParam(name="price_per_day") int pricePerDay) {
 		
-		Rooms r = new Rooms(null, roomType, balcone, floor, familyRoom, animals);
+		Rooms r = new Rooms(null, roomType, balcone, floor, familyRoom, animals, peopleCanBook);
 		Prices p = new Prices(null, pricePerDay, r);
 		pricesRespository.save(p);
 		String m = "Nowy pokoj zostal dodany";

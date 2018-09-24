@@ -51,6 +51,7 @@
         			Pietro <%=p.getRoom().getFloor() %><br>
         			Pokoj rodzinny <%=p.getRoom().getFamilyRoom() %><br>
         			Zwierzeta <%=p.getRoom().getAnimals() %><br>
+        			Max liczba do zameldowania <%=p.getRoom().getPeopleCanBook() %><br>
         			Cena za dzien <%= p.getPricePerDay()%> PLN <br>
         	<%}%>
         	<input type="submit" value="Usun pokoj">

@@ -54,6 +54,7 @@
       				Pietro: <input type="text" name="floor" value="<%=p.getRoom().getFloor()%>"><br>
       				Pokoj rodzinny: <input type="text" name="family_room" value="<%=p.getRoom().getFamilyRoom()%>"> <br>
       				Zwierzeta: <input type="text" name="animals" value="<%=p.getRoom().getAnimals()%>"><br>
+      				Maksymalna liczba do zameldowania <input type="text" name="peopleCanBook" value="<%=p.getRoom().getPeopleCanBook()%>">
       				Cena za dzien: <input type="text" name="price_per_day" value="<%=p.getPricePerDay()%>"><br>
       			<button type="submit" value="achangedroom">Aktualizuj pokoj</button>
       			</form>

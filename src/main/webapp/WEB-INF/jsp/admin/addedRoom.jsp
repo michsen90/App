@@ -47,13 +47,14 @@
         %>
         	<table>
         	<p>
-        		<tr>Typ pokoju: <%=p.getRoom().getRoomType()%>
-        		<tr>Balkon: <%=p.getRoom().getBalcone() %>
-        		<tr>Pietro: <%=p.getRoom().getFloor() %>
-        		<tr>Pokoj rodzinny: <%=p.getRoom().getFamilyRoom() %>
-        		<tr>Zwierzeta: <%=p.getRoom().getAnimals() %>
-        		<tr>Cena za dzien: <%=p.getPricePerDay() %>
-      		</p>
+        		<tr>Typ pokoju: <%=p.getRoom().getRoomType()%></tr>
+        		<tr>Balkon: <%=p.getRoom().getBalcone() %></tr>
+        		<tr>Pietro: <%=p.getRoom().getFloor() %></tr>
+        		<tr>Pokoj rodzinny: <%=p.getRoom().getFamilyRoom() %></tr>
+        		<tr>Zwierzeta: <%=p.getRoom().getAnimals() %></tr>
+        		<tr>Max liczba do zameldowania: <%=p.getRoom().getPeopleCanBook() %></tr>
+        		<tr>Cena za dzien: <%=p.getPricePerDay() %></tr>
+        		</p>
       		</table>
     </article>
 

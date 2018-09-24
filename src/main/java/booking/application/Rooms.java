@@ -35,6 +35,8 @@ public class Rooms {
 	private String familyRoom;
 	@Column(name="animals")
 	private String animals;
+	@Column(name="people_can_book")
+	private int peopleCanBook;
 	
 	@OneToMany(mappedBy="room")
 	private List<Prices> price;
@@ -44,7 +46,8 @@ public class Rooms {
 	
 	protected Rooms() {}
 	
-	public Rooms(Long idRoom, String roomType, String balcone, String floor, String familyRoom, String animals) {
+	public Rooms(Long idRoom, String roomType, String balcone, String floor, 
+			String familyRoom, String animals, int peopleCanBook) {
 		
 	
 		this.idRoom = idRoom;
@@ -53,13 +56,14 @@ public class Rooms {
 		this.floor = floor;
 		this.familyRoom = familyRoom;
 		this.animals = animals;
+		this.peopleCanBook = peopleCanBook;
 	}
 	
 	@Override
 	public String toString() {
 		
-		return String.format("Room[id=%d, roomType='%s', balcone='%s', floor='%s', familyRoom='%s', animals='%s']", 
-				+ idRoom, roomType, balcone, floor, familyRoom, animals);
+		return String.format("Room[id=%d, roomType='%s', balcone='%s', floor='%s', familyRoom='%s', animals='%s', peopleCanBook='%s']", 
+				+ idRoom, roomType, balcone, floor, familyRoom, animals, peopleCanBook);
 				
 	}
 
@@ -93,6 +97,32 @@ public class Rooms {
 
 	public void setFloor(String floor) {
 		this.floor = floor;
+	}
+	
+	
+
+	public int getPeopleCanBook() {
+		return peopleCanBook;
+	}
+
+	public void setPeopleCanBook(int peopleCanBook) {
+		peopleCanBook = peopleCanBook;
+	}
+
+	public List<Prices> getPrice() {
+		return price;
+	}
+
+	public void setPrice(List<Prices> price) {
+		this.price = price;
+	}
+
+	public List<Reservations> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservations> reservation) {
+		this.reservation = reservation;
 	}
 
 	public String getFamilyRoom() {
