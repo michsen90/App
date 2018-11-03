@@ -1,0 +1,2 @@
+# JMeter generated Authorization file
+http://localhost:8080/logowanie.html	michsen	gabrysia_1			BASIC_DIGEST
